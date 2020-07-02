@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class Map {
 
@@ -23,7 +24,7 @@ public class Map {
 
         int count = 0;
         for (HashMap.Entry<String, String> hashMap : map.entrySet()) {
-            if(hashMap.getKey() == lastName && hashMap.getValue() == firstName) count++;
+            if(hashMap.getKey().trim().equals(lastName) && hashMap.getValue().trim().equals(firstName)) count++;
         }
         return count;
         // Передать фамилию и имя человека в метод
@@ -39,10 +40,13 @@ public class Map {
      * @return - HashMap уже с удаленным элементом
      */
     public static HashMap<String, String> deleteValueFromMap(HashMap<String, String> map, String value) {
-        for (HashMap.Entry<String, String> ent : map.entrySet()) {
-            if (ent.getValue().equals(value)) {
-                map.remove(ent.getKey());
-            }
+
+        Iterator<HashMap.Entry<String, String>> it = map.entrySet().iterator();
+        while (it.hasNext()) {
+            HashMap.Entry<String, String> pair = it.next();
+                if (pair.getValue().trim().equals(value)) {
+                it.remove();
+                }
         }
         return map;
         // Необходимо наполнить HashMap<String, String> и удалить значение оттуда.
