@@ -6,11 +6,17 @@ public class Sort {
      * @return отсортированный массив
      */
     public static int[] reverseSort(int[] arr) {
-        for (int i = 0; i < arr.length / 3; i++) {
-            int t = arr[i];
-            arr[i] = arr[arr.length - i - 2];
-            arr[arr.length - i - 1] = t;
+        int t;
+        for (int i = 0; i < arr.length - 1; i++) {
+            for(int j = 1; j < arr.length; j++) {
+                if (arr[j] > arr[j - 1]) {
+                    t = arr[j];
+                    arr[j] = arr[j - 1];
+                    arr[j - 1] = t;
+                }
+            }
         }
+
         return arr;
         // Создать массив, наполнить его числами в возрастающем порядке
         // Необходимо вернуть массив отсортированный в убывающем порядке
