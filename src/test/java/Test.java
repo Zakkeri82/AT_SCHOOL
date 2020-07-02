@@ -10,6 +10,6 @@ public class Test {
 
         System.out.println("");
         System.out.println("Тестировка методов класса CompareObjects");
-
+        TestCompareObjects.testCompareObjects();
     }
 }
